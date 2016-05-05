@@ -9,6 +9,10 @@ class SearchContext implements Context
      */
     private $homepage;
     /**
+     * @var HomePageElements
+     */
+    private $homepageelements;
+    /**
      * @var SearchResultsNavigation
      */
     private $searchResultsNavigation;
@@ -16,10 +20,10 @@ class SearchContext implements Context
      * @param Homepage                $homepage
      * @param SearchResultsNavigation $searchResultsNavigation
      */
-    public function __construct(Homepage $homepage, SearchResultsNavigation $searchResultsNavigation)
+    public function __construct(Homepage $homepage, HomePageElements $homepageelements)
     {
         $this->homepage = $homepage;
-        $this->searchResultsNavigation = $searchResultsNavigation;
+        $this->homepageelements = $homepageelements;
     }
     /**
      * @Given /^I visited the homepage$/
@@ -28,12 +32,13 @@ class SearchContext implements Context
     {
         $this->homepage->open();
     }
+
     /**
-     * @When /^I should not see the "(?P<tab>[^"]*)" tab$/
+     * @When /^I should see the "(?P<tab>[^"]*)" tab$/
      */
-    public function iShouldSeeNotTheTab($tab)
+    public function iShouldSeeTheTab($tab)
     {
-        if ($this->searchResultsNavigation->hasTab($tab)) {
+        if ($this->homepageelements->hasMenu($tab)) {
             throw new \LogicException(sprintf('%s tab is present on the page', $tab));
         }
     }

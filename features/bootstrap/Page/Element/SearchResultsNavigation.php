@@ -6,7 +6,7 @@ class SearchResultsNavigation extends Element
     /**
      * @var string
      */
-    protected $selector = 'div.tabs';
+    protected $selector = '.menu>ul>li>a';
     /**
      * @return boolean
      */

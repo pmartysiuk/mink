@@ -5,5 +5,5 @@ default:
                 page: [Features\Page]
                 element: [Features\Page\Element]
         Behat\MinkExtension:
-            base_url: http://www.example.com
+            base_url: https://staging.carsaver.klika-tech.com/#
             selenium2: ~

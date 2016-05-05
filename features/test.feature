@@ -1,8 +1,7 @@
-Feature: Search
-  In order to find lolcats
-  As a Cat Lover
-  I want to search the internetz
+Feature: Login
 
-  Scenario: Searching for lolcats
+  Scenario: Login
     Given I visited the homepage
-    Then I should not see the "Images" tab
+      And I wait for ajax
+    Then I should see the Sing In button
+    Then I should see "Sign In" in the ".sign-in-menu.with-icon" element
