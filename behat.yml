@@ -1,5 +1,9 @@
 default:
     extensions:
+        SensioLabs\Behat\PageObjectExtension:
+              namespaces:
+                page: [Features\Page]
+                element: [Features\Page\Element]
         Behat\MinkExtension:
             base_url: http://www.example.com
             selenium2: ~
