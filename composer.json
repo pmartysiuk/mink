@@ -11,6 +11,8 @@
         "bin-dir": "vendor/bin/"
     },
     "require-dev": {
-        "sensiolabs/behat-page-object-extension": "^2.0"
+        "sensiolabs/behat-page-object-extension": "^2.0",
+        "bossa/phpspec2-expect": "*",
+        "phpunit/phpunit": "5.3.*"
     }
 }

@@ -7,3 +7,6 @@ default:
         Behat\MinkExtension:
             base_url: https://staging.carsaver.klika-tech.com/#
             selenium2: ~
+    suites:
+            default:
+                contexts: [FeatureContext, HomePageContext, UsedPageContext]
