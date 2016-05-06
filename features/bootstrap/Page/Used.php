@@ -14,6 +14,7 @@ class Used extends Page
         'Input' => '.inputText>input',
         'Confirm' => '.content>div>button',
         'Close' => '.closeBtn-with-text',
+        'Zip Code Input' => '.item>input',
     );
 
     public function zipCodePopUpPresent()
@@ -26,7 +27,7 @@ class Used extends Page
         return $this->getElement('Headline');
     }
 
-    public function zipCodeInputField()
+    public function zipCodePopupInputField()
     {
         return $this->getElement('Input');
     }
@@ -35,4 +36,11 @@ class Used extends Page
     {
         return $this->getElement($button);
     }
+
+    public function zipCodeInputField()
+    {
+        return $this->getElement('Zip Code Input');
+    }
+
+
 }

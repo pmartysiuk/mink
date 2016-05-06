@@ -22,20 +22,3 @@ Feature: Login
     When I press "Sign In"
       And I wait for ajax
     Then I should see "Log Out"
-
-  Scenario: Zip Code Pop up
-    Given I am on "/used"
-      And I wait for ajax
-    Then I should see an ".zip-code" element
-      And I should see an ".inputText" element
-      And I should see an ".content>div>button" element
-      And I should see an ".closeBtn-with-text" element
-
-  Scenario: Zip Code Pop up
-    Given I visited the "used" page
-      And I wait for ajax
-    Then I should see Zip Code pop up
-      And Zip pop up contains "Enter your ZIP code" headline
-      And Zip pop up contains input field with 'Zip Code' placeholder
-      And Zip pop up contains "Confirm" button
-      And Zip pop up contains "Close" button

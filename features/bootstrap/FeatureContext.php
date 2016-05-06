@@ -12,6 +12,14 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
     {
         $this->getSession()->wait(5000, 'window.jQuery !== undefined');
     }
+    /**
+     * @Then :value zip code is saved in local storage
+     */
+    public function zipCodeIsSavedInLocalStorage($value)
+    {
+        $actualZip = $this->getSession()->evaluateScript('window.localStorage.getItem(\'zipCode\')');
+        PHPUnit_Framework_Assert::assertEquals($actualZip, $value);
+    }
 
 
 }
