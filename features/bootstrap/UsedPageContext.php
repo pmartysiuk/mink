@@ -2,6 +2,7 @@
 
 use Behat\Behat\Context\Context;
 use Page\Used;
+use Page\UsedSearch;
 
 class UsedPageContext implements Context
 {
@@ -10,9 +11,15 @@ class UsedPageContext implements Context
      */
     private $used;
 
-    public function __construct(Used $used)
+    /**
+     * @var UsedSearch
+     */
+    private $usedSearch;
+
+    public function __construct(Used $used, UsedSearch $usedSearch)
     {
         $this->used = $used;
+        $this->usedSearch = $usedSearch;
     }
     
     /**
@@ -67,7 +74,7 @@ class UsedPageContext implements Context
     }
 
     /**
-     * @When I press :button button
+     * @When I press :button button in Zip pop up
      */
     public function iPressButton($button)
     {
@@ -84,11 +91,11 @@ class UsedPageContext implements Context
     }
 
     /**
-     * @Then Search page is displayed
+     * @When I press :button in search used car page
      */
-    public function searchPageIsDisplayed()
+    public function iPressInSearchUsedCarPage($button)
     {
-        
+        $this->usedSearch->usedPageElement($button)->press();
     }
 
 
