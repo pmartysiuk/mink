@@ -109,10 +109,9 @@ class HomePageContext implements Context
     public function iCreateNewUsersWithData(TableNode $table)
     {
 
-        foreach ($table->getColumnsHash() as $field => $value) {
-            var_dump($field);
-
-            die;
+        foreach ($table as $row) {
+            var_dump($row['First Name']);die;
+            
             $this->loginPopUp->loginPopUpElement('First Name')->setValue($row['First Name']);
             $this->loginPopUp->loginPopUpElement('Last Name')->setValue($row['Last Name']);
             $this->loginPopUp->loginPopUpElement('Email')->setValue($row['Email']);

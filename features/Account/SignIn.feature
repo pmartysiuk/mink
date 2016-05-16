@@ -4,6 +4,8 @@ Feature: Login
     Given I visited the "homepage" page
       And I wait for ajax
 
+###################POSITIVE SCENARIOS###################
+
   Scenario: Sign In button presents on the main page
     Then I should see the Sign In button
 
