@@ -15,11 +15,12 @@ class Used extends Page
         'Confirm' => '.content>div>button',
         'Close' => '.closeBtn-with-text',
         'Zip Code Input' => '.item>input',
+        'Error' => array('xpath' => '//div[@class=\'popup zipCode\']//div[@class=\'error errorMessage\']'),
     );
 
     public function zipCodePopUpPresent()
     {
-        return $this->getElement('Zip Code');
+        return $this->hasElement('Zip Code');
     }
 
     public function zipCodeHeadline()
@@ -35,6 +36,11 @@ class Used extends Page
     public function zipCodeBtn($button)
     {
         return $this->getElement($button);
+    }
+
+    public function zipCodeElement($element)
+    {
+        return $this->getElement($element);
     }
 
     public function zipCodeInputField()

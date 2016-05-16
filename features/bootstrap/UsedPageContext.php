@@ -35,7 +35,9 @@ class UsedPageContext implements Context
      */
     public function iShouldNotSeeZipCodePopUp()
     {
-        expect($this->used->zipCodePopUpPresent());
+        if ($this->used->zipCodePopUpPresent()) {
+            throw new \LogicException(sprintf('Zip code pop up is present on the page'));
+        }
     }
 
     /**
@@ -82,12 +84,13 @@ class UsedPageContext implements Context
     }
 
     /**
-     * @Then :value zip code is displayed in ZIP code input field
+     * @Then :value zip code should be displayed in ZIP code input field
      */
     public function zipCodeIsDisplayedInZipCodeInputField($value)
     {
         $zipCodeValue = $this->used->zipCodeInputField()->getValue();
-        PHPUnit_Framework_Assert::assertEquals($zipCodeValue->replaceAll('"',''), $value);
+        $zipCodeValue = str_replace('"','', $zipCodeValue);
+        PHPUnit_Framework_Assert::assertEquals($zipCodeValue, $value);
     }
 
     /**
@@ -97,6 +100,17 @@ class UsedPageContext implements Context
     {
         $this->usedSearch->usedPageElement($button)->press();
     }
+
+    /**
+     * @Then I should see :text error text in the Zip code pop up
+     */
+    public function iShouldSeeErrorTextInTheZipCodePopUp($text)
+    {
+        $errorText = $this->used->zipCodeElement('Error')->getText();
+        var_dump($errorText);
+        PHPUnit_Framework_Assert::assertEquals($errorText, $text);
+    }
+
 
 
 }
