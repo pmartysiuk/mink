@@ -1,5 +1,18 @@
 default:
-    extensions:
+  extensions:
+        SensioLabs\Behat\PageObjectExtension:
+              namespaces:
+                page: [Mink\Features\Page]
+                element: [Mink\Features\Page\Element]
         Behat\MinkExtension:
-            base_url: http://www.example.com
-            selenium2: ~
+          goutte: ~
+          selenium2: ~
+          base_url: http://resbroker1.insly3.dev
+        Bex\Behat\ScreenshotExtension: ~
+  suites:
+      default:
+        contexts:
+          - FeatureContext
+          - MainContext
+          - CustomerContext
+          - QuoteContext
