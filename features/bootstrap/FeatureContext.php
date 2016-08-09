@@ -11,7 +11,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
     public function iWaitForAjaxToFinish()
     {
         $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
-//        sleep(3);
     }
 
     /**
