@@ -1,17 +1,21 @@
 Feature: Check GIT calculator
 
-  @javascript
-  Scenario: Check GIT calculator all fields
+  Background:
     Given I visited the homepage
     And I log in as support
     And I am on "/offer/choices"
     And I open choices offer creation page
     And I fill choices offer by base data
-    And I select "Coffee Shop" from "prop_customer_sanctions_trade_for_rating"
-    And I click on "//*[@for='prop_choicesgit_show']" element
-    And I fill in the following:
-      | prop_product_choicesgit_vehicle_number | 1     |
-      | prop_product_choicesgit_limit_loss     | 1000  |
+
+##############################################POSITIVE_SCENARIO##############################################
+
+  @javascript
+  Scenario: Check GIT calculator all fields
+    Given I select "Coffee Shop" from "prop_customer_sanctions_trade_for_rating"
+      And I click on "//*[@for='prop_choicesgit_show']" element
+      And I fill in the following:
+        | prop_product_choicesgit_vehicle_number | 1     |
+        | prop_product_choicesgit_limit_loss     | 1000  |
     When I click on "//td[@class='offercalc']/button" element
     And I wait for ajax
     Then I should see "20.0" in the "value" attribute of "[id=prop_choices_pmt_accelerate_1]" element
@@ -21,12 +25,7 @@ Feature: Check GIT calculator
 
   @javascript
   Scenario Outline: Check GIT calculator multiplier based on limit value
-    Given I visited the homepage
-      And I log in as support
-      And I am on "/offer/choices"
-      And I open choices offer creation page
-      And I fill choices offer by base data
-      And I select "Coffee Shop" from "prop_customer_sanctions_trade_for_rating"
+    Given I select "Coffee Shop" from "prop_customer_sanctions_trade_for_rating"
       And I click on "//*[@for='prop_choicesgit_show']" element
       And I fill in the following:
         | prop_product_choicesgit_vehicle_number | 1     |
@@ -44,18 +43,13 @@ Feature: Check GIT calculator
 
   @javascript
   Scenario Outline: Check GIT calculator for each hazard
-    Given I visited the homepage
-    And I log in as support
-    And I am on "/offer/choices"
-    And I open choices offer creation page
-    And I fill choices offer by base data
-    And I select "<trade>" from "prop_customer_sanctions_trade_for_rating"
-    And I click on "//*[@for='prop_choicesgit_show']" element
-    And I fill in the following:
-      | prop_product_choicesgit_vehicle_number | 1    |
-      | prop_product_choicesgit_limit_loss     | 1000 |
+    Given  I select "<trade>" from "prop_customer_sanctions_trade_for_rating"
+      And I click on "//*[@for='prop_choicesgit_show']" element
+      And I fill in the following:
+        | prop_product_choicesgit_vehicle_number | 1    |
+        | prop_product_choicesgit_limit_loss     | 1000 |
     When I click on "//td[@class='offercalc']/button" element
-    And I wait for ajax
+      And I wait for ajax
     Then I should see "<total_premium>" in the "value" attribute of "[id=prop_choices_pmt_accelerate_1]" element
     Examples:
       | hazard  | trade                                 | total_premium |

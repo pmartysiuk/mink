@@ -81,7 +81,6 @@ class MainContext implements Context
         $this->loginpage->login($user, $password);
     }
 
-
     /**
      * @Given /^I open create new quote form$/
      */
